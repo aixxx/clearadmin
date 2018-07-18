@@ -1,0 +1,53 @@
+DROP TABLE IF EXISTS `fa_menus`;
+CREATE TABLE `fa_menus` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `types` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0为系统默认,1为后期添加',
+  `type` enum('menu','file') NOT NULL DEFAULT 'file' COMMENT 'menu为菜单,file为权限节点',
+  `ismenu` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否为菜单',
+  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父ID',
+  `name` varchar(100) NOT NULL DEFAULT 'page' COMMENT '规则名称',
+  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
+  `keyword` varchar(50) NOT NULL DEFAULT '' COMMENT '关键字',
+  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
+  `page_id` int(11) NOT NULL DEFAULT 0 COMMENT '页面',
+  `header_image` varchar(255) DEFAULT '' COMMENT '头部图片',
+  `is_header_switch` tinyint(1) DEFAULT 1 COMMENT '头部显示',
+  `is_left_switch` tinyint(1) DEFAULT 1 COMMENT '左侧显示',
+  `left_images` varchar(255) DEFAULT '' COMMENT '左侧图片,宽:130',
+  `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',
+  `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `weigh` int(10) NOT NULL DEFAULT '0' COMMENT '权重',
+  `status` varchar(30) NOT NULL DEFAULT '' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`) USING BTREE,
+  KEY `pid` (`pid`),
+  KEY `weigh` (`weigh`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='菜单管理表';
+
+DROP TABLE IF EXISTS `en_menus`;
+CREATE TABLE `en_menus` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `types` enum('0','1') NOT NULL DEFAULT '0' COMMENT '0为系统默认,1为后期添加',
+  `type` enum('menu','file') NOT NULL DEFAULT 'file' COMMENT 'menu为菜单,file为权限节点',
+  `ismenu` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否为菜单',
+  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父ID',
+  `name` varchar(100) NOT NULL DEFAULT 'page' COMMENT '规则名称',
+  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
+  `keyword` varchar(50) NOT NULL DEFAULT '' COMMENT '关键字',
+  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
+  `page_id` int(11) NOT NULL DEFAULT 0 COMMENT '页面',
+  `header_image` varchar(255) DEFAULT '' COMMENT '头部图片',
+  `is_header_switch` tinyint(1) DEFAULT 1 COMMENT '头部显示',
+  `is_left_switch` tinyint(1) DEFAULT 1 COMMENT '左侧显示',
+  `left_images` varchar(255) DEFAULT '' COMMENT '左侧图片,宽:130',
+  `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',
+  `createtime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updatetime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `weigh` int(10) NOT NULL DEFAULT '0' COMMENT '权重',
+  `status` varchar(30) NOT NULL DEFAULT '' COMMENT '状态',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`) USING BTREE,
+  KEY `pid` (`pid`),
+  KEY `weigh` (`weigh`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='en_菜单管理表';
